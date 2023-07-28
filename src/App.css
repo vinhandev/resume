@@ -91,3 +91,21 @@ ul {
   left: 50%;
   margin-top: 10px;
 }
+.language:hover {
+  cursor: pointer;
+}
+.language {
+  color: grey;
+}
+.text {
+  color: white;
+}
+
+@media (prefers-color-scheme: light) {
+  .text {
+    color: black !important;
+  }
+  .language {
+    color: #eeeeee;
+  }
+}

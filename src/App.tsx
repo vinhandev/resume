@@ -2,18 +2,72 @@ import { useState } from "react";
 import "./App.css";
 import { useCopyToClipboard } from "./hooks";
 
-const HeaderName = ({ name }: { name: string }) => {
+const HeaderName = ({
+  name,
+  isEnglish,
+  setIsEnglish,
+}: {
+  name: string;
+  isEnglish: boolean;
+  setIsEnglish: (param: boolean) => void;
+}) => {
   return (
-    <h1
+    <div
       style={{
-        fontSize: "35px",
-        fontFamily: "Josefin Sans",
-        margin: 0,
-        textAlign: "center",
+        position: "relative",
       }}
     >
-      {name}
-    </h1>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        <p
+          className={`language ${isEnglish ? "text" : ""}`}
+          onClick={() => {
+            setIsEnglish(true);
+          }}
+          style={{
+            fontSize: "14px",
+            marginRight: "10px",
+            transition: "1000ms all ease",
+            fontWeight: "500",
+          }}
+        >
+          ENG
+        </p>
+        <p>{` | `}</p>
+        <p
+          className={`language ${!isEnglish ? "text" : ""}`}
+          onClick={() => {
+            setIsEnglish(false);
+          }}
+          style={{
+            fontSize: "14px",
+            marginLeft: "10px",
+            transition: "1000ms all ease",
+            fontWeight: "500",
+          }}
+        >
+          VIE
+        </p>
+      </div>
+      <h1
+        style={{
+          fontSize: "35px",
+          fontFamily: "Josefin Sans",
+          margin: 0,
+          textAlign: "center",
+        }}
+      >
+        {name}
+      </h1>
+    </div>
   );
 };
 
@@ -161,10 +215,10 @@ const Divider = ({ text }: { text: string }) => {
   );
 };
 
-const SkillPart = ({ skills }: { skills: string[] }) => {
+const SkillPart = ({ name, skills }: { name: string; skills: string[] }) => {
   return (
     <div>
-      <Divider text="Skills" />
+      <Divider text={name} />
       <ul>
         {skills.map((item) => (
           <li key={item}>{item}</li>
@@ -240,8 +294,10 @@ const ExperienceTitle = ({
 };
 
 const ExperiencesPart = ({
+  name,
   experiences,
 }: {
+  name: string;
   experiences: {
     role: string;
     company: string;
@@ -252,7 +308,7 @@ const ExperiencesPart = ({
 }) => {
   return (
     <div>
-      <Divider text="Experiences" />
+      <Divider text={name} />
       {experiences.map((item, index) => (
         <ul key={index}>
           <ExperienceTitle
@@ -275,8 +331,10 @@ const ExperiencesPart = ({
   );
 };
 const EducationPart = ({
+  name,
   educations,
 }: {
+  name: string;
   educations: {
     role: string;
     school: string;
@@ -286,7 +344,7 @@ const EducationPart = ({
 }) => {
   return (
     <div>
-      <Divider text="Educations" />
+      <Divider text={name} />
       {educations.map((item, index) => (
         <ul key={index}>
           <ExperienceTitle
@@ -301,10 +359,10 @@ const EducationPart = ({
     </div>
   );
 };
-const OtherPart = ({ others }: { others: string[] }) => {
+const OtherPart = ({ name, others }: { name: string; others: string[] }) => {
   return (
     <div>
-      <Divider text="Others" />
+      <Divider text={name} />
       <ul>
         {others.map((item) => {
           return (
@@ -321,16 +379,20 @@ const OtherPart = ({ others }: { others: string[] }) => {
   );
 };
 const ProjectPart = ({
+  name,
   projects,
+  viewMore,
 }: {
+  name: string;
   projects: {
     name: string;
     description: string[];
   }[];
+  viewMore: string;
 }) => {
   return (
     <div>
-      <Divider text="Projects" />
+      <Divider text={name} />
       {projects.map((item, index) => (
         <ul key={index}>
           <ExperienceTitle company="" text={item.name} place="" year="" />
@@ -344,44 +406,143 @@ const ProjectPart = ({
           ))}
         </ul>
       ))}
+      <a
+        style={{
+          marginLeft: "35px",
+          fontSize: "12px",
+          color: "white",
+          textDecoration: "underline",
+        }}
+        href="https://portfolio-vinhandev.vercel.app/"
+      >
+        {viewMore}
+      </a>
     </div>
   );
 };
 
-function App() {
-  const data: {
+export interface DataPayload {
+  config: {
+    skillLabel: string;
+    experiences: string;
+    educations: string;
+    projects: string;
+    others: string;
+    viewMore: string;
+  };
+  name: string;
+  portfolioLink: string;
+  phoneLink: string;
+  phoneDisplay: string;
+  email: string;
+  githubLink: string;
+  linkedin: string;
+  skills: string[];
+  experiences: {
+    role: string;
+    company: string;
+    address: string;
+    year: string;
+    description: string[];
+  }[];
+  educations: {
+    role: string;
+    school: string;
+    address: string;
+    time: string;
+  }[];
+  projects: {
     name: string;
-    portfolioLink: string;
-    phoneLink: string;
-    phoneDisplay: string;
-    email: string;
-    githubLink: string;
-    linkedin: string;
-    skills: string[];
-    experiences: {
-      role: string;
-      company: string;
-      address: string;
-      year: string;
-      description: string[];
-    }[];
-    educations: {
-      role: string;
-      school: string;
-      address: string;
-      time: string;
-    }[];
-    projects: {
-      name: string;
-      description: string[];
-    }[];
-    others: string[];
-  } = {
+    description: string[];
+  }[];
+  others: string[];
+}
+
+function App() {
+  const [isEnglish, setIsEnglish] = useState(true);
+
+  const englishData: DataPayload = {
+    config: {
+      skillLabel: "Skills",
+      educations: "Educations",
+      experiences: "Experiences",
+      others: "Others",
+      projects: "Projects",
+      viewMore: "View More",
+    },
     name: "Trần Vĩ Nhân",
     email: "vinhan.dev@gmail.com",
     githubLink: "https://github.com/tranvinhan2k",
     linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
-    phoneDisplay: "+84 (36) 2017 512",
+    phoneDisplay: "83262017512",
+    phoneLink: "84362017512",
+    portfolioLink: "https://portfolio-vinhandev.vercel.app/",
+    skills: [
+      "HTML | CSS | Javascript | Typescript | C++ | MSSQL | Node | React |Redux | Redux Saga | React Native | Git",
+      " C# | .NET | JAVA | Solidity | Unity | Android Java | Swift | Android | Xcode | Mobile Development",
+      "Docker | Cryptocurrency | Blockchain | Microservices | Frontend | Backend | Full-Stack | English, Japanese",
+    ],
+    experiences: [
+      {
+        role: "Software Engineer",
+        address: "Ho Chi Minh City",
+        company: "FDSSoft",
+        description: [
+          `Developed login functionalities for Google, Facebook, and Apple accounts, built the iOS version of the app, configured app content for review on the Apple Developer and edited some features in the Unity source code for <a  href=https://www.talentiveapp.com/ target="_blank">Talentive</a>.`,
+          `Led and developed mobile versions for the <a href=https://www.talentiveapp.com/>TalentIdo</a> project. Configured and submitted both <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Android</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>IOS</a> versions for review. Both applications are now available on the <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Google Play</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>App Store</a>.`,
+          `Enhanced NFT marketplace with token trading functionality, added buying and selling of cryptocurrencies. Experienced in integrating Stripe for secure payment processing. Updated facial recognition and credential verification features. Upgraded website interface in two website <a target="_blank" href=https://talentido.com/main>talentido.com</a> and <a target="_blank" href=https://talentido.io/>talentido.io</a>.`,
+          `Developed customer's interface and navigation functionalities, google map for a mobile app project offering truck rental services <a target="_blank" href=https://365fds.com/>365FDS</a>.`,
+        ],
+        year: "MAR 2022 - JUN 2023",
+      },
+      {
+        role: "Software Engineer, Intern",
+        address: "Ho Chi Minh City",
+        company: "FPT Software",
+        description: [
+          `Designed an interactive demo interface for an e-commerce website and a diagnostic interface for a dental clinic in Japan. Using Reactjs`,
+          `Implemented logging functionality and contributed to interface tasks for the team's project. Using React, Node.js, and JavaScript.`,
+        ],
+        year: "MAY 2021 - AUG 2021",
+      },
+    ],
+    educations: [
+      {
+        role: "Bachelor of Software Engineer",
+        address: "Ho Chi Minh City",
+        school: "FPT University",
+        time: "NOV 2018 - MAR 2022",
+      },
+    ],
+    others: [
+      "2010 - Achieved third prize in office informatics of Binh Duong Province.",
+      "2012 - Awarded with encouragement prize for excellence stuudent of Informatics of Binh Duong Province.",
+      "English Proficiency Certificate equivalent to IELTS 6.0",
+    ],
+    projects: [
+      {
+        name: "MiSmart",
+        description: [
+          "Link Demo: <a href='http://103.173.155.221:3000/' target='_blank x'>http://103.173.155.221:3000</a>",
+          "Developed a website that connects tutors with instructors in the field of information technology. Empowered tutors to utilize the platform as a Learning Management System (LMS) to facilitate teaching and learning activities.",
+        ],
+      },
+    ],
+  };
+  const vietnameseData: DataPayload = {
+    config: {
+      skillLabel: "Skills",
+      educations: "Educations",
+      experiences: "Experiences",
+      others: "Others",
+      projects: "Projects",
+      viewMore: "Xem thêm",
+    },
+    name: "Trần Vĩ Nhân",
+    email: "vinhan.dev@gmail.com",
+    githubLink: "https://github.com/tranvinhan2k",
+    linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
+    phoneDisplay: "83262017512",
     phoneLink: "84362017512",
     portfolioLink: "https://portfolio-vinhandev.vercel.app/",
     skills: [
@@ -474,16 +635,10 @@ function App() {
           "Ngôn ngữ sử dụng: Reactjs, Redux, Nodejs, SpringBoot",
         ],
       },
-      {
-        name: "HabitSnap",
-        description: [
-          "Link Demo: <a href='http://103.173.155.221:3000/' target='_blank x'>http://103.173.155.221:3000</a>",
-          "Website kết nối gia sư với giảng viên khối ngành công nghệ thông tin. Cho phép gia sư sử dụng website như một website LMS hỗ trợ việc dạy học",
-          "Ngôn ngữ sử dụng: Reactjs, Redux, Nodejs, SpringBoot",
-        ],
-      },
     ],
   };
+
+  const data = isEnglish ? englishData : vietnameseData;
 
   return (
     <div
@@ -494,7 +649,11 @@ function App() {
         paddingBottom: "10px",
       }}
     >
-      <HeaderName name={data.name} />
+      <HeaderName
+        name={data.name}
+        isEnglish={isEnglish}
+        setIsEnglish={setIsEnglish}
+      />
       <ContactInformation
         email={data.email}
         githubLink={data.githubLink}
@@ -503,11 +662,21 @@ function App() {
         phoneLink={data.phoneLink}
         portfolioLink={data.portfolioLink}
       />
-      <SkillPart skills={data.skills} />
-      <ExperiencesPart experiences={data.experiences} />
-      <EducationPart educations={data.educations} />
-      <ProjectPart projects={data.projects} />
-      <OtherPart others={data.others} />
+      <SkillPart name={data.config.skillLabel} skills={data.skills} />
+      <ExperiencesPart
+        name={data.config.experiences}
+        experiences={data.experiences}
+      />
+      <EducationPart
+        name={data.config.educations}
+        educations={data.educations}
+      />
+      <ProjectPart
+        name={data.config.projects}
+        projects={data.projects}
+        viewMore={data.config.viewMore}
+      />
+      <OtherPart name={data.config.others} others={data.others} />
     </div>
   );
 }
