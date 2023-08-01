@@ -17,16 +17,7 @@ const HeaderName = ({
         position: "relative",
       }}
     >
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-        }}
-      >
+      <div className="language_bar">
         <p
           className={`language ${isEnglish ? "text" : ""}`}
           onClick={() => {
@@ -116,6 +107,7 @@ const ContactInformation = ({
       style={{
         display: "flex",
         flexDirection: "row",
+        flexWrap: "wrap",
         justifyContent: "center",
       }}
     >
@@ -215,6 +207,22 @@ const Divider = ({ text }: { text: string }) => {
   );
 };
 
+const IntroducePart = ({
+  name,
+  introduce,
+}: {
+  name: string;
+  introduce: string;
+}) => {
+  return (
+    <div>
+      <Divider text={name} />
+      <ul>
+        <li>{introduce}</li>
+      </ul>
+    </div>
+  );
+};
 const SkillPart = ({ name, skills }: { name: string; skills: string[] }) => {
   return (
     <div>
@@ -242,12 +250,12 @@ const ExperienceTitle = ({
   return (
     <div
       style={{
-        lineHeight: 0,
         margin: 0,
         position: "relative",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
+        flexWrap: "wrap",
         justifyContent: "space-between",
       }}
     >
@@ -259,19 +267,7 @@ const ExperienceTitle = ({
       >
         {text}
       </p>
-      <p
-        style={{
-          textAlign: "center",
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: 0,
-          bottom: 0,
-          alignSelf: "center",
-        }}
-      >
-        {company}
-      </p>
+      <p className="company">{company}</p>
       <p
         style={{
           fontStyle: "italic",
@@ -429,8 +425,10 @@ export interface DataPayload {
     projects: string;
     others: string;
     viewMore: string;
+    introduceLabel: string;
   };
   name: string;
+  introduce: string;
   portfolioLink: string;
   phoneLink: string;
   phoneDisplay: string;
@@ -469,8 +467,10 @@ function App() {
       others: "Others",
       projects: "Projects",
       viewMore: "View More",
+      introduceLabel: "About",
     },
     name: "Trần Vĩ Nhân",
+    introduce: "Hello there, My name is Trần Vĩ Nhân, and I am an experienced programmer with 1.5 years of hands-on experience in mobile app development using React Native. I already have application that appear in app store and ch play. Moreover, my skills extend beyond mobile app development, as I am well-versed in both backend and frontend coding with Nodejs, Reactjs or Java. Over the course of my career, I have gained expertise in working with blockchain technologies, particularly in Solidity, and I am also proficient in Unity. I am eager to continue learning and growing in my field, which is why I am seeking a competitive and supportive work environment that fosters continuous learning and offers opportunities to explore new horizons. ",
     email: "vinhan.dev@gmail.com",
     githubLink: "https://github.com/tranvinhan2k",
     linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
@@ -478,7 +478,7 @@ function App() {
     phoneLink: "84362017512",
     portfolioLink: "https://portfolio-vinhandev.vercel.app/",
     skills: [
-      "HTML | CSS | Javascript | Typescript | C++ | MSSQL | Node | React |Redux | Redux Saga | React Native | Git",
+      "React Native | HTML | CSS | Javascript | Typescript | Node | React | Redux | Redux Saga | Git",
       " C# | .NET | JAVA | Solidity | Unity | Android Java | Swift | Android | Xcode | Mobile Development",
       "Docker | Cryptocurrency | Blockchain | Microservices | Frontend | Backend | Full-Stack | English, Japanese",
     ],
@@ -537,14 +537,17 @@ function App() {
       others: "Others",
       projects: "Projects",
       viewMore: "Xem thêm",
+      introduceLabel: "Introduce",
     },
     name: "Trần Vĩ Nhân",
+    introduce: "Tên tôi là Trần Vĩ Nhân, và tôi là một lập trình viên có kinh nghiệm với 1.5 năm thực tiễn trong việc phát triển ứng dụng di động bằng React Native. Tôi đã thành công trong việc phát triển các ứng dụng đã xuất hiện trên cả App Store và Google Play.  Ngoài khả năng vững vàng trong việc phát triển ứng dụng di động, tôi còn am hiểu và có kỹ năng phát triển cả phần backend và frontend với Node.js, React.js hoặc Java. Từng bước đi trong sự nghiệp, tôi đã có được sự chuyên môn trong công nghệ blockchain, đặc biệt là Solidity, và tôi cũng thành thạo Unity. Điều thú vị khiến tôi luôn hăng hái là sự khao khát học hỏi và phát triển bản thân trong lĩnh vực này. Đó là lý do tại sao tôi đang tìm kiếm một môi trường làm việc cạnh tranh và hỗ trợ, nơi tạo điều kiện liên tục học hỏi và cung cấp cơ hội khám phá những điều mới mẻ. Tôi tin rằng khả năng kỹ thuật của mình, kết hợp với tính tò mò và thân thiện, sẽ là đóng góp quan trọng cho bất kỳ dự án hay nhóm công việc nào. Tôi thực sự háo hức với viễn cảnh được gia nhập một tổ chức sáng tạo, chung tay xây dựng sự đam mê với công nghệ và tạo điều kiện để phát triển cá nhân và chuyên môn. Cám ơn vì đã xem xét đơn của tôi. Tôi rất mong muốn đối mặt với những thử thách mới và đóng góp mạnh mẽ cho thành công của những dự án tương lai của chúng ta.",
     email: "vinhan.dev@gmail.com",
     githubLink: "https://github.com/tranvinhan2k",
     linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
     phoneDisplay: "83262017512",
     phoneLink: "84362017512",
     portfolioLink: "https://portfolio-vinhandev.vercel.app/",
+
     skills: [
       "HTML | CSS | Javascript | Typescript | C++ | MSSQL | Node | React |Redux | Redux Saga | React Native | Git",
       " C# | .NET | JAVA | Solidity | Unity | Android Java | Swift | Android | Xcode | Mobile Development",
@@ -662,6 +665,7 @@ function App() {
         phoneLink={data.phoneLink}
         portfolioLink={data.portfolioLink}
       />
+      <IntroducePart name={data.config.introduceLabel} introduce={data.introduce} />
       <SkillPart name={data.config.skillLabel} skills={data.skills} />
       <ExperiencesPart
         name={data.config.experiences}
