@@ -475,8 +475,8 @@ function App() {
     email: "vinhan.dev@gmail.com",
     githubLink: "https://github.com/tranvinhan2k",
     linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
-    phoneDisplay: "83262017512",
-    phoneLink: "84362017512",
+    phoneDisplay: "0362017512",
+    phoneLink: "0362017512",
     portfolioLink: "https://portfolio-vinhandev.vercel.app/",
     skills: [
       "React Native | HTML | CSS | Javascript | Typescript | Node | React | Redux | Redux Saga | Git",
