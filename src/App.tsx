@@ -471,7 +471,7 @@ function App() {
     },
     name: "Trần Vĩ Nhân",
     introduce:
-      "Hello there, My name is Trần Vĩ Nhân, and I am an experienced programmer with 1.5 years of hands-on experience in mobile app development using React Native. I already have application that appear in app store and ch play. Moreover, my skills extend beyond mobile app development, as I can code in both backend and frontend coding with Nodejs, Reactjs or Java. Over the course of my career, I have gained expertise in working with blockchain technologies, Solidity and Unity. I am eager to continue learning and growing in my field, which is why I am seeking a competitive and supportive work environment that fosters continuous learning and offers opportunities to explore new horizons.",
+      "Greetings, I am Trần Vĩ Nhân, a mobile app developer. I have 1.5 years of experience with the React Native language and have already published an app on both Google Play and the App Store. My core skill set lies in mobile development, and I also possess 1 year of experience in ReactJS and Nodejs. I am currently seeking a competitive environment to further develop my skill set and achieve more milestones in my software engineering career path. It's a pleasure to introduce myself to your esteemed company. Thank you for considering my resume.",
     email: "vinhan.dev@gmail.com",
     githubLink: "https://github.com/tranvinhan2k",
     linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
@@ -479,8 +479,8 @@ function App() {
     phoneLink: "0362017512",
     portfolioLink: "https://portfolio-vinhandev.vercel.app/",
     skills: [
-      "React Native | HTML | CSS | Javascript | Typescript | Node | React | Redux | Redux Saga | Git",
-      " C# | .NET | JAVA | Solidity | Unity | Android Java | Swift | Android | Xcode | Mobile Development",
+      "React Native | HTML | CSS | Javascript | Typescript | NodeJS | ReactJS | Redux | Redux Saga | Git",
+      "JAVA | Solidity | Unity | Android Java | Swift | Android | Xcode | Mobile Development",
       "Docker | Cryptocurrency | Blockchain | Microservices | Frontend | Backend | Full-Stack | English, Japanese",
     ],
     experiences: [
@@ -489,10 +489,10 @@ function App() {
         address: "Ho Chi Minh City",
         company: "FDSSoft",
         description: [
-          `Developed login functionalities for Google, Facebook, and Apple accounts, built the iOS version of the app, configured app content for review on the Apple Developer and edited some features in the Unity source code for <a  href=https://www.talentiveapp.com/ target="_blank">Talentive</a>.`,
-          `Led and developed mobile versions for the <a href=https://www.talentiveapp.com/>TalentIdo</a> project. Configured and submitted both <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Android</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>IOS</a> versions for review. Both applications are now available on the <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Google Play</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>App Store</a>.`,
-          `Enhanced NFT marketplace with token trading functionality, added buying and selling of cryptocurrencies. Experienced in integrating Stripe for secure payment processing. Updated facial recognition and credential verification features. Upgraded website interface in two website <a target="_blank" href=https://talentido.com/main>talentido.com</a> and <a target="_blank" href=https://talentido.io/>talentido.io</a>.`,
-          `Developed customer's interface and navigation functionalities, google map for a mobile app project offering truck rental services <a target="_blank" href=https://365fds.com/>365FDS</a>.`,
+          `Developed login functionalities for Google, Facebook, and Apple accounts, built the iOS version of the app, configured app content for review on the Apple Developer and edited some features in the Unity source code for <a  href=https://www.talentiveapp.com/ target="_blank">Talentive</a> mobile application using React Native.`,
+          `Led and developed mobile versions for the <a href=https://www.talentiveapp.com/>TalentIdo</a> mobile application using React Native. Configured and submitted both <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Android</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>IOS</a> versions for review. Both applications are now available on the <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Google Play</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>App Store</a>.`,
+          `Enhanced NFT marketplace with token trading functionality, added buying and selling of cryptocurrencies. Experienced in integrating Stripe for secure payment processing. Updated facial recognition and credential verification features. Upgraded website interface in two website <a target="_blank" href=https://talentido.com/main>talentido.com</a> and <a target="_blank" href=https://talentido.io/>talentido.io</a> using ReactJS and NodeJS.`,
+          `Developed customer's interface and navigation functionalities, google map for a mobile app project offering truck rental services <a target="_blank" href=https://365fds.com/>365FDS</a> using ReactJS.`,
         ],
         year: "MAR 2022 - JUN 2023",
       },
@@ -524,8 +524,9 @@ function App() {
       {
         name: "MiSmart",
         description: [
-          "Link Demo: <a href='http://103.173.155.221:3000/' target='_blank x'>http://103.173.155.221:3000</a>",
+          "Link Demo: <a href='https://mismart.vercel.app/' target='_blank x'>https://mismart.vercel.app/</a>",
           "Developed a website that connects tutors with instructors in the field of information technology. Empowered tutors to utilize the platform as a Learning Management System (LMS) to facilitate teaching and learning activities.",
+          "This is my capstone project in FPT University. My part is coding frontend for this website. I using ReactJS for coding this part.",
         ],
       },
     ],
@@ -635,7 +636,7 @@ function App() {
       {
         name: "MiSmart",
         description: [
-          "Link Demo: <a href='http://103.173.155.221:3000/' target='_blank x'>http://103.173.155.221:3000</a>",
+          "Link Demo: <a href='https://mismart.vercel.app/' target='_blank x'>https://mismart.vercel.app/</a>",
           "Website kết nối gia sư với giảng viên khối ngành công nghệ thông tin. Cho phép gia sư sử dụng website như một website LMS hỗ trợ việc dạy học",
           "Ngôn ngữ sử dụng: Reactjs, Redux, Nodejs, SpringBoot",
         ],
