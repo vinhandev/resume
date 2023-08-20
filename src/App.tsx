@@ -17,7 +17,7 @@ const HeaderName = ({
         position: "relative",
       }}
     >
-      <div className="language_bar">
+      {/* <div className="language_bar">
         <p
           className={`language ${isEnglish ? "text" : ""}`}
           onClick={() => {
@@ -47,7 +47,7 @@ const HeaderName = ({
         >
           VIE
         </p>
-      </div>
+      </div> */}
       <h1
         style={{
           fontSize: "35px",
@@ -471,7 +471,7 @@ function App() {
     },
     name: "Trần Vĩ Nhân",
     introduce:
-      "Greetings, I am Trần Vĩ Nhân, a mobile app developer. I have 1.5 years of experience with the React Native language and have already published an app on both Google Play and the App Store. My core skill set lies in mobile development, and I also possess 1 year of experience in ReactJS and Nodejs. I am currently seeking a competitive environment to further develop my skill set and achieve more milestones in my software engineering career path. It's a pleasure to introduce myself to your esteemed company. Thank you for considering my resume.",
+      "Greetings, I am Trần Vĩ Nhân, a software engineer. I have almost 2 years of experience in website development with ReactJS and NodeJS and in mobile development with React Native. I have already published an app on both Google Play and the App Store. I have experience work direct with foreigner clients and design UX/UI by myself. I am currently seeking a competitive environment to further develop my skill set and achieve more milestones in my software engineering career path. It's a pleasure to introduce myself to your esteemed company. Thank you for considering my resume.",
     email: "vinhan.dev@gmail.com",
     githubLink: "https://github.com/tranvinhan2k",
     linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
@@ -479,7 +479,7 @@ function App() {
     phoneLink: "0362017512",
     portfolioLink: "https://portfolio-vinhandev.vercel.app/",
     skills: [
-      "React Native | HTML | CSS | Javascript | Typescript | NodeJS | ReactJS | Redux | Redux Saga | Git",
+      "ReactJS | React Native | HTML | CSS | Javascript | Typescript | NodeJS | Redux | Redux Saga | Git",
       "JAVA | Solidity | Unity | Android Java | Swift | Android | Xcode | Mobile Development",
       "Docker | Cryptocurrency | Blockchain | Microservices | Frontend | Backend | Full-Stack | English, Japanese",
     ],
@@ -687,6 +687,13 @@ function App() {
         viewMore={data.config.viewMore}
       />
       <OtherPart name={data.config.others} others={data.others} />
+      <OtherPart name={'Contacts'} others={[
+        'Email: vinhan.dev@gmail.com',
+        'Phone: 0362017512',
+        'Portfolio: <a href=https://portfolio-vinhandev.vercel.app//>https://portfolio-vinhandev.vercel.app/</a>',
+        'Github: <a href=https://github.com/tranvinhan2k/>https://github.com/tranvinhan2k</a>',
+        'Email: <a href=https://www.linkedin.com/in/nhan-tran-582005278/>https://www.linkedin.com/in/nhan-tran-582005278/</a>',
+      ]} />
     </div>
   );
 }
