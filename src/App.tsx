@@ -26,7 +26,8 @@ const HeaderName = ({ name }: { name: string }) => {
         <Box
           src={avatar}
           sx={{
-            height: "150px",
+            transition:'all 500ms ease',
+            height: {xs:"120px",md:"150px"},
             width: undefined,
             aspectRatio: 1,
             borderRadius: 1000,
@@ -36,9 +37,9 @@ const HeaderName = ({ name }: { name: string }) => {
           component={"img"}
         />
         <Stack marginLeft={1}>
-          <h1
-            style={{
-              fontSize: "60px",
+          <Typography
+            sx={{
+              fontSize: { xs: "40px", sm: "60px" },
               fontFamily: "Josefin Sans",
               margin: 0,
               textAlign: "center",
@@ -46,11 +47,11 @@ const HeaderName = ({ name }: { name: string }) => {
             }}
           >
             {name}
-          </h1>
+          </Typography>
           <Typography
             sx={{
               fontFamily: "Dosis",
-              fontSize: "30px",
+              fontSize: { xs: "20px", sm: "30px" },
               textAlign: "center",
               fontWeight: "bold",
               color: "white",
@@ -61,7 +62,7 @@ const HeaderName = ({ name }: { name: string }) => {
           <Typography
             sx={{
               fontFamily: "Dosis",
-              fontSize: "20px",
+              fontSize: { xs: "15px", md: "20px" },
               textAlign: "center",
               fontWeight: "bold",
               color: "white",
@@ -571,7 +572,7 @@ function App() {
       }}
     >
       <Button
-      onClick={downloadCV}
+        onClick={downloadCV}
         startIcon={<FileDownloadIcon />}
         variant="contained"
         sx={{
@@ -608,7 +609,7 @@ function App() {
             background: "#eff3f6",
           }}
         >
-          <Grid item xs={3} sx={{ background: "#fff" }}>
+          <Grid item xs={12} sm={4} md={4} lg={3} sx={{ background: "#fff" }}>
             <Stack padding={2}>
               <IntroducePart
                 name={data.config.introduceLabel}
@@ -623,7 +624,7 @@ function App() {
               </Stack>
             </Stack>
           </Grid>
-          <Grid item xs={9}>
+          <Grid item xs={12} sm={8} md={8} lg={9}>
             <Stack padding={3}>
               <SkillPart name={data.config.skillLabel} skills={data.skills} />
               <ExperiencesPart
