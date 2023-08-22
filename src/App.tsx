@@ -1,7 +1,8 @@
 import "./App.css";
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
-import FileDownloadIcon from '@mui/icons-material/CloudDownload';
+import FileDownloadIcon from "@mui/icons-material/CloudDownload";
 import avatar from "./assets/about_image.jpg";
+import cv from "./assets/REACTJS_TRAN_VI_NHAN.pdf";
 const HeaderName = ({ name }: { name: string }) => {
   return (
     <Stack
@@ -558,6 +559,10 @@ function App() {
 
   const data = englishData;
 
+  const downloadCV = () => {
+    window.open(cv);
+  };
+
   return (
     <Stack
       sx={{
@@ -566,20 +571,21 @@ function App() {
       }}
     >
       <Button
-      startIcon={<FileDownloadIcon/>}
-      variant="contained"
+      onClick={downloadCV}
+        startIcon={<FileDownloadIcon />}
+        variant="contained"
         sx={{
-          transition:'all 1000ms ease',
-          background:'#164B60',
-          borderRadius:'20px',
-          paddingX:2,
-          paddingY:1,
+          transition: "all 1000ms ease",
+          background: "#164B60",
+          borderRadius: "20px",
+          paddingX: 2,
+          paddingY: 1,
           position: "fixed",
           right: "20px",
           bottom: "20px",
-          boxShadow:1,
-          ":hover":{
-            background:'#4FC0D0'
+          boxShadow: 1,
+          ":hover": {
+            background: "#4FC0D0",
           },
         }}
       >
