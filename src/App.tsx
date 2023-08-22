@@ -1,5 +1,6 @@
 import "./App.css";
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import FileDownloadIcon from '@mui/icons-material/CloudDownload';
 import avatar from "./assets/about_image.jpg";
 const HeaderName = ({ name }: { name: string }) => {
   return (
@@ -558,42 +559,79 @@ function App() {
   const data = englishData;
 
   return (
-    <Stack>
-      <Stack>
-        <HeaderName name={data.name} />
-      </Stack>
-      <Grid
-        container
+    <Stack
+      sx={{
+        position: "relative",
+        background: "linear-gradient(297deg, #1d1e22 10%, #252B48 100%);",
+      }}
+    >
+      <Button
+      startIcon={<FileDownloadIcon/>}
+      variant="contained"
         sx={{
-          background: "#eff3f6",
+          transition:'all 1000ms ease',
+          background:'#164B60',
+          borderRadius:'20px',
+          paddingX:2,
+          paddingY:1,
+          position: "fixed",
+          right: "20px",
+          bottom: "20px",
+          boxShadow:1,
+          ":hover":{
+            background:'#4FC0D0'
+          },
         }}
       >
-        <Grid item xs={3} sx={{ background: "#fff" }}>
-          <Stack padding={2}>
-            <IntroducePart
-              name={data.config.introduceLabel}
-              introduce={data.introduce}
-            />
-            <Stack marginTop={1}>
-              <ContactsPart name={"Contact"} />
-            </Stack>
+        <Typography>Download</Typography>
+      </Button>
+      <Stack
+        sx={{
+          transition: "all 500ms ease",
+          boxShadow: 2,
+          marginX: { xs: "0", md: "100px", lg: "200px", xl: "350px" },
+          marginY: { xs: "0", md: "60px" },
+        }}
+      >
+        <Stack>
+          <HeaderName name={data.name} />
+        </Stack>
+        <Grid
+          container
+          sx={{
+            background: "#eff3f6",
+          }}
+        >
+          <Grid item xs={3} sx={{ background: "#fff" }}>
+            <Stack padding={2}>
+              <IntroducePart
+                name={data.config.introduceLabel}
+                introduce={data.introduce}
+              />
+              <Stack marginTop={1}>
+                <ContactsPart name={"Contact"} />
+              </Stack>
 
-            <Stack marginTop={1}>
-              <EducationsPart name={data.config.educations} />
+              <Stack marginTop={1}>
+                <EducationsPart name={data.config.educations} />
+              </Stack>
             </Stack>
-          </Stack>
+          </Grid>
+          <Grid item xs={9}>
+            <Stack padding={3}>
+              <SkillPart name={data.config.skillLabel} skills={data.skills} />
+              <ExperiencesPart
+                name={data.config.experiences}
+                experiences={data.experiences}
+              />
+              <ProjectPart
+                name={data.config.projects}
+                projects={data.projects}
+              />
+            </Stack>
+          </Grid>
         </Grid>
-        <Grid item xs={9}>
-          <Stack padding={3}>
-            <SkillPart name={data.config.skillLabel} skills={data.skills} />
-            <ExperiencesPart
-              name={data.config.experiences}
-              experiences={data.experiences}
-            />
-            <ProjectPart name={data.config.projects} projects={data.projects} />
-          </Stack>
-        </Grid>
-      </Grid>
+      </Stack>
     </Stack>
   );
 }
