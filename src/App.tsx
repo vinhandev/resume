@@ -1,64 +1,72 @@
 import { useState } from "react";
 import "./App.css";
-import { useCopyToClipboard } from "./hooks";
-
+import { Box, Grid, Stack, Typography } from "@mui/material";
+import avatar from './assets/about_image.jpg'
 const HeaderName = ({
   name,
-  isEnglish,
-  setIsEnglish,
 }: {
   name: string;
-  isEnglish: boolean;
-  setIsEnglish: (param: boolean) => void;
 }) => {
   return (
-    <div
-      style={{
-        position: "relative",
+    <Stack
+      sx={{
+        backgroundRepeat:"no-repeat",
+        background:'url(https://images.pexels.com/photos/1102797/pexels-photo-1102797.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)'
       }}
     >
-      {/* <div className="language_bar">
-        <p
-          className={`language ${isEnglish ? "text" : ""}`}
-          onClick={() => {
-            setIsEnglish(true);
-          }}
-          style={{
-            fontSize: "14px",
-            marginRight: "10px",
-            transition: "1000ms all ease",
-            fontWeight: "500",
-          }}
-        >
-          ENG
-        </p>
-        <p>{` | `}</p>
-        <p
-          className={`language ${!isEnglish ? "text" : ""}`}
-          onClick={() => {
-            setIsEnglish(false);
-          }}
-          style={{
-            fontSize: "14px",
-            marginLeft: "10px",
-            transition: "1000ms all ease",
-            fontWeight: "500",
-          }}
-        >
-          VIE
-        </p>
-      </div> */}
+  
+      <Stack sx={{
+        height:'250px',
+        justifyContent:"center",
+        alignItems:'center',
+        backdropFilter:'blur(5px)',
+        background:'#000000AA',
+        width:"100%",
+        flexDirection:'row',
+
+      }}>
+          <Box src={avatar} sx={{
+          height:'150px',
+          width:undefined,
+          aspectRatio:1,
+          borderRadius:1000,
+          boxShadow:1,
+          objectFit:'cover',
+        }} component={'img'}/>
+      <Stack marginLeft={1}>
       <h1
         style={{
-          fontSize: "35px",
+          fontSize: "60px",
           fontFamily: "Josefin Sans",
           margin: 0,
           textAlign: "center",
+          color:'white',
         }}
       >
         {name}
       </h1>
-    </div>
+      <Typography sx={{
+        fontFamily:'Dosis',
+        fontSize:'30px',
+        textAlign:'center',
+        fontWeight:'bold',
+        color:'white',
+
+      }}>FE/MOBILE/BE DEVELOPER</Typography>
+      <Typography 
+      sx={{
+        fontFamily:'Dosis',
+        fontSize:'20px',
+        textAlign:'center',
+        fontWeight:'bold',
+        color:'white',
+
+      }}>CORE SKILLSET: <span style={{
+        color:"#279EFF"
+      }}> REACTJS | REACT NATIVE</span></Typography>
+      </Stack>
+      </Stack>
+    </Stack>
   );
 };
 
@@ -100,54 +108,13 @@ const ContactInformation = ({
   githubLink: string;
   linkedin: string;
 }) => {
-  const { copy, copiedText } = useCopyToClipboard();
 
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "center",
       }}
     >
-      <div className="contact-node">
-        <Tooltip text={"Xem chi tiết"}>
-          <a target="_blank" href={portfolioLink}>
-            Portfolio
-          </a>
-        </Tooltip>
-      </div>
-      <div className="contact-node">
-        <CopyText
-          copiedText={copiedText}
-          copy={copy}
-          text={phoneLabel}
-          value={phoneLink}
-        />
-      </div>
-      <div className="contact-node">
-        <CopyText
-          copiedText={copiedText}
-          copy={copy}
-          text={email}
-          value={email}
-        />
-      </div>
-      <div className="contact-node">
-        <Tooltip text={"Xem chi tiết"}>
-          <a target="_blank" href={githubLink}>
-            Github
-          </a>
-        </Tooltip>
-      </div>
-      <div className="contact-node">
-        <Tooltip text={"Xem chi tiết"}>
-          <a target="_blank" href={linkedin}>
-            Linkedin
-          </a>
-        </Tooltip>
-      </div>
+     
     </div>
   );
 };
@@ -190,6 +157,8 @@ const Divider = ({ text }: { text: string }) => {
         <a
           style={{
             margin: 0,
+          fontFamily: "Josefin Sans",
+          fontSize:'20px',
           }}
         >
           {text}
@@ -197,7 +166,7 @@ const Divider = ({ text }: { text: string }) => {
       </div>
       <div
         style={{
-          borderBottom: "0.5px solid #666",
+          borderBottom: "1px solid #666",
           flexGrow: 1,
           marginLeft: "10px",
           marginRight: "10px",
@@ -215,12 +184,117 @@ const IntroducePart = ({
   introduce: string;
 }) => {
   return (
-    <div>
-      <Divider text={name} />
-      <ul>
-        <li>{introduce}</li>
-      </ul>
-    </div>
+    <Stack sx={{
+    }}>
+      <Typography sx={{
+         background:'#78C1F3',
+         paddingLeft:1,
+        fontSize:"20px",
+        fontWeight:'bold',
+        fontFamily:'Dosis'
+      }}>{name}</Typography>
+     <Typography sx={{
+      fontSize:'10px',
+     }} marginY={2} marginLeft={1}>{introduce}</Typography>
+    </Stack>
+  );
+};
+const EducationsPart = ({
+  name,
+}: {
+  name: string;
+}) => {
+  return (
+    <Stack sx={{
+    }}>
+      <Typography sx={{
+        background:'#78C1F3',
+        paddingLeft:1,
+        fontSize:"20px",
+        fontWeight:'bold',
+        fontFamily:'Dosis'
+      }}>{name}</Typography>
+    <Stack marginLeft={1}>
+    <Typography sx={{fontWeight:'bold',fontSize:'12px',color:'black',marginTop:1}} >FPT UNIVERSITY</Typography>
+     <Typography sx={{fontWeight:'bold', fontSize:'10px',}} >Bachelor of Software Engineer</Typography>
+     <Typography sx={{
+      fontSize:'10px'
+     }} >NOV 2018 - MAR 2022</Typography>
+    </Stack>
+    </Stack>
+  );
+};
+const ContactsPart = ({
+  name,
+}: {
+  name: string;
+}) => {
+  return (
+    <Stack >
+      <Typography sx={{
+        background:'#78C1F3',
+        paddingLeft:1,
+        fontSize:"20px",
+        fontWeight:'bold',
+        fontFamily:'Dosis'
+      }}>{name}</Typography>
+    <Stack marginLeft={1}>
+    <Typography sx={{
+      fontSize:'10px',fontWeight:'bold'
+     }} marginTop={1} >
+        EMAIL
+      </Typography>
+      <Typography sx={{
+      fontSize:'10px',
+     }}>
+      vinhan.dev@gmail.com
+      </Typography>
+      <Typography sx={{
+      fontSize:'10px',
+      fontWeight:'bold',
+     }} marginTop={1} >
+        PHONE NUMBER
+      </Typography>
+      <Typography sx={{
+      fontSize:'10px',
+     }}>
+      0362017512
+      </Typography>
+      <Typography marginTop={1} sx={{
+      fontSize:'10px',
+      fontWeight:'bold',
+     }}>
+        PORFOLIO
+      </Typography>
+      <Typography sx={{
+      fontSize:'10px',
+     }}>
+      <a href="https://portfolio-vinhandev.vercel.app">https://portfolio-vinhandev.vercel.app</a>
+      </Typography>
+      <Typography marginTop={1} sx={{
+      fontSize:'10px',
+      fontWeight:'bold',
+     }}>
+      GITHUB
+      </Typography>
+      <Typography sx={{
+      fontSize:'10px',
+     }}>
+      <a href="https://github.com/tranvinhan2k">https://github.com/tranvinhan2k</a>      
+      </Typography>
+      <Typography marginTop={1} sx={{
+      fontSize:'10px',
+      fontWeight:'bold',
+     }}>
+      ADDRESS
+      </Typography>
+      <Typography sx={{
+      fontSize:'10px',
+     }}>
+      Ho Chi Minh      
+      </Typography>
+    </Stack>
+    </Stack>
   );
 };
 const SkillPart = ({ name, skills }: { name: string; skills: string[] }) => {
@@ -229,7 +303,11 @@ const SkillPart = ({ name, skills }: { name: string; skills: string[] }) => {
       <Divider text={name} />
       <ul>
         {skills.map((item) => (
-          <li key={item}>{item}</li>
+          <li style={{
+            fontFamily:'Roboto'
+          }} key={item} dangerouslySetInnerHTML={{
+            __html:item,
+          }}/>
         ))}
       </ul>
     </div>
@@ -250,18 +328,19 @@ const ExperienceTitle = ({
   return (
     <div
       style={{
-        margin: 0,
         position: "relative",
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
         flexWrap: "wrap",
+        fontFamily:'Dosis',
         justifyContent: "space-between",
       }}
     >
       <p
         style={{
-          // color: "#fff",
+          margin:0,
+          padding:0,
           fontWeight: "600",
         }}
       >
@@ -270,8 +349,7 @@ const ExperienceTitle = ({
       <p className="company">{company}</p>
       <p
         style={{
-          fontStyle: "italic",
-          color: "grey",
+          color: "black",
           fontSize: "12px",
         }}
       >
@@ -279,7 +357,8 @@ const ExperienceTitle = ({
         <span
           style={{
             fontStyle: "normal",
-            color: "white",
+            color: "black",
+            fontWeight:'bold',
           }}
         >
           {year}
@@ -314,47 +393,18 @@ const ExperiencesPart = ({
             year={item.year}
           />
           {item.description.map((subItem) => (
-            <li
-              key={subItem}
-              dangerouslySetInnerHTML={{
-                __html: subItem,
-              }}
-            />
+             <li style={{
+              fontFamily:'Roboto'
+            }} key={subItem} dangerouslySetInnerHTML={{
+              __html:subItem,
+            }}/>
           ))}
         </ul>
       ))}
     </div>
   );
 };
-const EducationPart = ({
-  name,
-  educations,
-}: {
-  name: string;
-  educations: {
-    role: string;
-    school: string;
-    address: string;
-    time: string;
-  }[];
-}) => {
-  return (
-    <div>
-      <Divider text={name} />
-      {educations.map((item, index) => (
-        <ul key={index}>
-          <ExperienceTitle
-            company={item.school}
-            text={item.role}
-            place={item.address}
-            year={item.time}
-          />
-          <li>Major in Software Engineer</li>
-        </ul>
-      ))}
-    </div>
-  );
-};
+
 const OtherPart = ({ name, others }: { name: string; others: string[] }) => {
   return (
     <div>
@@ -362,12 +412,11 @@ const OtherPart = ({ name, others }: { name: string; others: string[] }) => {
       <ul>
         {others.map((item) => {
           return (
-            <li
-              key={item}
-              dangerouslySetInnerHTML={{
-                __html: item,
-              }}
-            />
+            <li style={{
+              fontFamily:'Roboto'
+            }} key={item} dangerouslySetInnerHTML={{
+              __html:item,
+            }}/>
           );
         })}
       </ul>
@@ -393,26 +442,15 @@ const ProjectPart = ({
         <ul key={index}>
           <ExperienceTitle company="" text={item.name} place="" year="" />
           {item.description.map((subItem) => (
-            <li
-              key={subItem}
-              dangerouslySetInnerHTML={{
-                __html: subItem,
-              }}
-            />
+            <li style={{
+              fontFamily:'Roboto'
+            }} key={subItem} dangerouslySetInnerHTML={{
+              __html:subItem,
+            }}/>
           ))}
         </ul>
       ))}
-      <a
-        style={{
-          marginLeft: "35px",
-          fontSize: "12px",
-          color: "white",
-          textDecoration: "underline",
-        }}
-        href="https://portfolio-vinhandev.vercel.app/"
-      >
-        {viewMore}
-      </a>
+      
     </div>
   );
 };
@@ -466,12 +504,12 @@ function App() {
       experiences: "Experiences",
       others: "Others",
       projects: "Projects",
-      viewMore: "View More",
+      viewMore: "View More Projects",
       introduceLabel: "About",
     },
     name: "Trần Vĩ Nhân",
     introduce:
-      "Greetings, I am Trần Vĩ Nhân, a software engineer. I have almost 2 years of experience in website development with ReactJS and NodeJS and in mobile development with React Native. I have already published an app on both Google Play and the App Store. I have experience work direct with foreigner clients and design UX/UI by myself. I am currently seeking a competitive environment to further develop my skill set and achieve more milestones in my software engineering career path. It's a pleasure to introduce myself to your esteemed company. Thank you for considering my resume.",
+      "Greetings, I have almost 2 years of experience in website development with ReactJS and NodeJS and in mobile development with React Native. I have already published an app on both Google Play and the App Store. ",
     email: "vinhan.dev@gmail.com",
     githubLink: "https://github.com/tranvinhan2k",
     linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
@@ -479,9 +517,11 @@ function App() {
     phoneLink: "0362017512",
     portfolioLink: "https://portfolio-vinhandev.vercel.app/",
     skills: [
-      "ReactJS | React Native | HTML | CSS | Javascript | Typescript | NodeJS | Redux | Redux Saga | Git",
-      "JAVA | Solidity | Unity | Android Java | Swift | Android | Xcode | Mobile Development",
-      "Docker | Cryptocurrency | Blockchain | Microservices | Frontend | Backend | Full-Stack | English, Japanese",
+      "<strong>FRONT END</strong>: REACTJS | REACT NATIVE",
+      "<strong>OTHER</strong>: NODEJS | JAVA | SOLIDITY | UNITY | ANDROID | SWIFT",
+      "<strong>SOFT SKILL</strong>: GIT | DOCKER | ENGLISH (IELTS 6.0) | JAPANESE",
+      "Knowledge and experience working with Cryptocurrency | Blockchain , Understand microservice",
+      "Problem Solving, well know SOLID method and algorithm",
     ],
     experiences: [
       {
@@ -489,10 +529,10 @@ function App() {
         address: "Ho Chi Minh City",
         company: "FDSSoft",
         description: [
-          `Developed login functionalities for Google, Facebook, and Apple accounts, built the iOS version of the app, configured app content for review on the Apple Developer and edited some features in the Unity source code for <a  href=https://www.talentiveapp.com/ target="_blank">Talentive</a> mobile application using React Native.`,
-          `Led and developed mobile versions for the <a href=https://www.talentiveapp.com/>TalentIdo</a> mobile application using React Native. Configured and submitted both <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Android</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>IOS</a> versions for review. Both applications are now available on the <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Google Play</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>App Store</a>.`,
-          `Enhanced NFT marketplace with token trading functionality, added buying and selling of cryptocurrencies. Experienced in integrating Stripe for secure payment processing. Updated facial recognition and credential verification features. Upgraded website interface in two website <a target="_blank" href=https://talentido.com/main>talentido.com</a> and <a target="_blank" href=https://talentido.io/>talentido.io</a> using ReactJS and NodeJS.`,
-          `Developed customer's interface and navigation functionalities, google map for a mobile app project offering truck rental services <a target="_blank" href=https://365fds.com/>365FDS</a> using ReactJS.`,
+          `<strong>Talentive Project</strong>: Developed login functionalities for Google, Facebook, and Apple accounts, built the iOS version of the app, configured app content for review on the Apple Developer and edited some features in the Unity source code for <a  href=https://www.talentiveapp.com/ target="_blank">Talentive (https://www.talentiveapp.com) </a> mobile application using Unity.`,
+          `<strong>TalentIDO Mobile Application Project</strong>: Led and developed mobile versions for the <a href=https://www.talentiveapp.com/>TalentIdo</a> mobile application using React Native. Configured and submitted both <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Android</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>IOS</a> versions for review. Both applications are now available on the <a target="_blank" href=https://play.google.com/store/apps/details?id=com.talentido.mobile>Google Play (https://play.google.com/store/apps/details?id=com.talentido.mobile)</a> and <a target="_blank" href=https://apps.apple.com/app/talentido/id1658689767>App Store (https://apps.apple.com/app/talentido/id1658689767)</a>.`,
+          `<strong>TalentIDO Website Project</strong>: Enhanced NFT marketplace with token trading functionality, added buying and selling of cryptocurrencies. Experienced in integrating Stripe for secure payment processing. Updated facial recognition and credential verification features. Upgraded website interface in two website <a target="_blank" href=https://talentido.com/main>talentido.com</a> and <a target="_blank" href=https://talentido.io/>talentido.io</a> using ReactJS and NodeJS.`,
+          `<strong>365FDS Mobile Application Project</strong>: Developed customer's interface and navigation functionalities, google map for a mobile app project offering truck rental services <a target="_blank" href=https://365fds.com/>365FDS</a> using React Native.`,
         ],
         year: "MAR 2022 - JUN 2023",
       },
@@ -516,8 +556,8 @@ function App() {
       },
     ],
     others: [
-      "2010 - Achieved third prize in office informatics of Binh Duong Province.",
-      "2012 - Awarded with encouragement prize for excellence stuudent of Informatics of Binh Duong Province.",
+      "2010 - Achieved third prize in office informatics at Binh Duong Province.",
+      "2012 - Awarded with encouragement prize for excellence student of Informatics at Binh Duong Province.",
       "English Proficiency Certificate equivalent to IELTS 6.0",
     ],
     projects: [
@@ -525,7 +565,7 @@ function App() {
         name: "MiSmart",
         description: [
           "Link Demo: <a href='https://mismart.vercel.app/' target='_blank x'>https://mismart.vercel.app/</a>",
-          "Developed a website that connects tutors with instructors in the field of information technology. Empowered tutors to utilize the platform as a Learning Management System (LMS) to facilitate teaching and learning activities.",
+          "Website connect student and tutor and support LMS for teaching process",
           "This is my capstone project in FPT University. My part is coding frontend for this website. I using ReactJS for coding this part.",
         ],
       },
@@ -647,54 +687,53 @@ function App() {
   const data = isEnglish ? englishData : vietnameseData;
 
   return (
-    <div
-      style={{
-        paddingLeft: "30px",
-        paddingRight: "30px",
-        paddingTop: "10px",
-        paddingBottom: "10px",
-      }}
-    >
-      <HeaderName
+      <Stack>
+        <Stack>
+        <HeaderName
         name={data.name}
-        isEnglish={isEnglish}
-        setIsEnglish={setIsEnglish}
       />
-      <ContactInformation
-        email={data.email}
-        githubLink={data.githubLink}
-        linkedin={data.linkedin}
-        phoneLabel={data.phoneDisplay}
-        phoneLink={data.phoneLink}
-        portfolioLink={data.portfolioLink}
-      />
-      <IntroducePart
+        </Stack>
+        <Grid container sx={{
+        background:'#eff3f6'
+      }}>
+      <Grid item xs={3} sx={{background:'#fff'}}>
+      
+     <Stack padding={2}>
+     <IntroducePart
         name={data.config.introduceLabel}
         introduce={data.introduce}
       />
+      <Stack marginTop={1}>
+      <ContactsPart
+        name={'Contact'}
+      />
+      </Stack>
+     
+      <Stack marginTop={1}>
+      <EducationsPart
+        name={data.config.educations}
+      />
+      </Stack>
+     </Stack>
+      </Grid>
+      <Grid item xs={9}>
+     
+      <Stack padding={3}>
       <SkillPart name={data.config.skillLabel} skills={data.skills} />
       <ExperiencesPart
         name={data.config.experiences}
         experiences={data.experiences}
-      />
-      <EducationPart
-        name={data.config.educations}
-        educations={data.educations}
       />
       <ProjectPart
         name={data.config.projects}
         projects={data.projects}
         viewMore={data.config.viewMore}
       />
-      <OtherPart name={data.config.others} others={data.others} />
-      <OtherPart name={'Contacts'} others={[
-        'Email: vinhan.dev@gmail.com',
-        'Phone: 0362017512',
-        'Portfolio: <a href=https://portfolio-vinhandev.vercel.app//>https://portfolio-vinhandev.vercel.app/</a>',
-        'Github: <a href=https://github.com/tranvinhan2k/>https://github.com/tranvinhan2k</a>',
-        'Email: <a href=https://www.linkedin.com/in/nhan-tran-582005278/>https://www.linkedin.com/in/nhan-tran-582005278/</a>',
-      ]} />
-    </div>
+      </Stack>
+      </Grid>
+      </Grid>
+      </Stack>
+
   );
 }
 
