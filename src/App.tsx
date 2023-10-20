@@ -3,47 +3,48 @@ import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import FileDownloadIcon from "@mui/icons-material/CloudDownload";
 import avatar from "./assets/about_image.jpg";
 import cv from "./assets/REACTJS_TRAN_VI_NHAN.pdf";
+import background from "./assets/background.jpg";
 const HeaderName = ({ name }: { name: string }) => {
   return (
     <Stack
       sx={{
         backgroundRepeat: "no-repeat",
-        background:
-          "url(https://images.pexels.com/photos/1102797/pexels-photo-1102797.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
+        background:`url(${background})`,
+        backgroundSize:'700px 400px'
       }}
     >
       <Stack
         sx={{
           height: "250px",
-          justifyContent: "center",
           alignItems: "center",
           backdropFilter: "blur(5px)",
-          background: "#000000AA",
-          width: "100%",
+          background: "#00000088",
           flexDirection: "row",
+          justifyContent:'center',
+          paddingX:'17px',
         }}
       >
         <Box
           src={avatar}
           sx={{
             transition:'all 500ms ease',
-            height: {xs:"120px",md:"150px"},
+            height: {xs:"110px",md:"130px"},
             width: undefined,
+            borderRadius:1000,
             aspectRatio: 1,
-            borderRadius: 1000,
-            boxShadow: 1,
+            border:'5px solid #fff',
             objectFit: "cover",
+            boxShadow:1,
           }}
           component={"img"}
         />
-        <Stack marginLeft={1}>
+        <Stack marginLeft={2}>
           <Typography
             sx={{
-              fontSize: { xs: "40px", sm: "60px" },
+              fontSize: { xs: "40px", sm: "57px" },
               fontFamily: "Josefin Sans",
-              margin: 0,
-              textAlign: "center",
               color: "white",
+              lineHeight:'30px',
             }}
           >
             {name}
@@ -51,8 +52,7 @@ const HeaderName = ({ name }: { name: string }) => {
           <Typography
             sx={{
               fontFamily: "Dosis",
-              fontSize: { xs: "20px", sm: "30px" },
-              textAlign: "center",
+              fontSize: { xs: "20px", sm: "31px" },
               fontWeight: "bold",
               color: "white",
             }}
@@ -63,12 +63,11 @@ const HeaderName = ({ name }: { name: string }) => {
             sx={{
               fontFamily: "Dosis",
               fontSize: { xs: "15px", md: "20px" },
-              textAlign: "center",
               fontWeight: "bold",
               color: "white",
             }}
           >
-            CORE SKILLSET:{" "}
+            CORE LANGUAGE:{" "}
             <span
               style={{
                 color: "#279EFF",
@@ -495,7 +494,7 @@ function App() {
     },
     name: "Trần Vĩ Nhân",
     introduce:
-      "Greetings, I have almost 2 years of experience in website development with ReactJS and NodeJS and in mobile development with React Native. I have already published an app on both Google Play and the App Store. ",
+      "Greetings, I have 1 years of experience in website development with ReactJS and NodeJS and in mobile development with React Native. I have already published an app on both Google Play and the App Store. ",
     email: "vinhan.dev@gmail.com",
     githubLink: "https://github.com/tranvinhan2k",
     linkedin: "https://www.linkedin.com/in/nhan-tran-582005278/",
@@ -505,7 +504,7 @@ function App() {
     skills: [
       "<strong>FRONT END</strong>: REACTJS | REACT NATIVE",
       "<strong>OTHER</strong>: NODEJS | JAVA | SOLIDITY | UNITY | ANDROID | SWIFT",
-      "<strong>SOFT SKILL</strong>: GIT | DOCKER | ENGLISH (IELTS 6.0) | JAPANESE",
+      "<strong>SOFT SKILL</strong>: GIT | DOCKER | ENGLISH | JAPANESE",
       "Knowledge and experience working with Cryptocurrency | Blockchain , Understand microservice",
       "Problem Solving, well know SOLID method and algorithm",
     ],
@@ -551,8 +550,7 @@ function App() {
         name: "MiSmart",
         description: [
           "Link Demo: <a href='https://mismart.vercel.app/' target='_blank x'>https://mismart.vercel.app/</a>",
-          "Website connect student and tutor and support LMS for teaching process",
-          "This is my capstone project in FPT University. My part is coding frontend for this website. I using ReactJS for coding this part.",
+          "Website allow teacher to sell course and do LMS funcitons such as do Quiz, Assignment, Take Attendance,...",
         ],
       },
     ],
@@ -606,10 +604,10 @@ function App() {
         <Grid
           container
           sx={{
-            background: "#eff3f6",
+            background: "#ffffff",
           }}
         >
-          <Grid item xs={12} sm={4} md={4} lg={3} sx={{ background: "#fff" }}>
+          <Grid item xs={12} sm={4} md={4} lg={3} sx={{ background: "#fff",borderRight:'1px solid #ddd' }}>
             <Stack padding={2}>
               <IntroducePart
                 name={data.config.introduceLabel}
