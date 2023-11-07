@@ -519,7 +519,7 @@ function App() {
           `<strong>TalentIDO Website Project</strong>: Enhanced NFT marketplace with token trading functionality, added buying and selling of cryptocurrencies. Experienced in integrating Stripe for secure payment processing. Updated facial recognition and credential verification features. Upgraded website interface in two website <a target="_blank" href=https://talentido.com/main>talentido.com</a> and <a target="_blank" href=https://talentido.io/>talentido.io</a> using ReactJS and NodeJS.`,
           `<strong>365FDS Mobile Application Project</strong>: Developed customer's interface and navigation functionalities, google map for a mobile app project offering truck rental services <a target="_blank" href=https://365fds.com/>365FDS</a> using React Native.`,
         ],
-        year: "MAR 2022 - JUN 2023",
+        year: "MAR 2022 - Present",
       },
       {
         role: "Software Engineer, Intern",
@@ -558,10 +558,6 @@ function App() {
 
   const data = englishData;
 
-  const downloadCV = () => {
-    window.open(cv);
-  };
-
   return (
     <Stack
       sx={{
@@ -569,27 +565,6 @@ function App() {
         background: "linear-gradient(297deg, #1d1e22 10%, #252B48 100%);",
       }}
     >
-      <Button
-        onClick={downloadCV}
-        startIcon={<FileDownloadIcon />}
-        variant="contained"
-        sx={{
-          transition: "all 1000ms ease",
-          background: "#164B60",
-          borderRadius: "20px",
-          paddingX: 2,
-          paddingY: 1,
-          position: "fixed",
-          right: "20px",
-          bottom: "20px",
-          boxShadow: 1,
-          ":hover": {
-            background: "#4FC0D0",
-          },
-        }}
-      >
-        <Typography>Download</Typography>
-      </Button>
       <Stack
         sx={{
           transition: "all 500ms ease",
